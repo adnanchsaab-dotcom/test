@@ -1,0 +1,269 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2822
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red77\green80\blue85;\red236\green241\blue247;\red0\green0\blue0;
+\red109\green109\blue109;\red251\green0\blue7;\red42\green42\blue42;\red107\green0\blue1;\red0\green0\blue255;
+\red24\green112\blue43;\red9\green60\blue148;\red19\green118\blue70;\red111\green14\blue195;\red14\green110\blue109;
+\red164\green69\blue11;}
+{\*\expandedcolortbl;;\cssrgb\c37255\c38824\c40784;\cssrgb\c94118\c95686\c97647;\cssrgb\c0\c0\c0;
+\cssrgb\c50196\c50196\c50196;\cssrgb\c100000\c0\c0;\cssrgb\c21961\c21961\c21961;\cssrgb\c50196\c0\c0;\cssrgb\c0\c0\c100000;
+\cssrgb\c9412\c50196\c21961;\cssrgb\c1569\c31765\c64706;\cssrgb\c3529\c52549\c34510;\cssrgb\c51765\c18824\c80784;\cssrgb\c0\c50196\c50196;
+\cssrgb\c70980\c34902\c3137;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww29340\viewh15220\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs28 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 <!-- Chosen Palette: Serene Sky -->\cf0 \cb1 \strokec4 \
+\cf2 \cb3 \strokec2 <!-- Application Structure Plan: The application is designed as a "Dynamic Grid with Modal Details" single-page application. This structure was chosen for its high scannability and user-friendliness, allowing users to browse a large catalog of movies efficiently on one page. A prominent search bar provides immediate filtering. Clicking a movie card opens a modal dialog, presenting detailed information and actions (like copying a password or sharing) without navigating away from the main grid. This preserves user context and provides a seamless, modern media browsing experience. -->\cf0 \cb1 \strokec4 \
+\cf2 \cb3 \strokec2 <!-- Visualization & Content Choices: \cf0 \cb1 \strokec4 \
+\cf2 \cb3 \strokec2 - Report Info: Full Movie List -> Goal: Organize/Compare -> Viz/Presentation: Interactive Grid of Cards (HTML/CSS/JS) -> Interaction: Real-time search filtering, click to view details -> Justification: Provides a fast, visual way to browse and find movies.\cf0 \cb1 \strokec4 \
+\cf2 \cb3 \strokec2 - Report Info: Individual Movie Details (Link, Password, Review) -> Goal: Inform/Action -> Viz/Presentation: Modal Dialog (HTML/CSS/JS) -> Interaction: Copy password, open link, share details, view full, scrollable review -> Justification: Focuses user actions and information in a contained, non-disruptive overlay, ensuring long reviews are fully readable.\cf0 \cb1 \strokec4 \
+\cf2 \cb3 \strokec2 - Report Info: Movie Image -> Goal: Inform/Identify -> Viz/Presentation: HTML `<img>` with a dynamic, color-coded initial-based placeholder fallback (JS/CSS) -> Interaction: Visual identification -> Justification: Creates a robust and visually appealing interface that gracefully handles missing or broken image links.\cf0 \cb1 \strokec4 \
+\cf2 \cb3 \strokec2 - No complex data visualization libraries like Chart.js or Plotly.js are needed as the data is qualitative. -->\cf0 \cb1 \strokec4 \
+\cf2 \cb3 \strokec2 <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->\cf0 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf5 \cb3 \strokec5 <!DOCTYPE\cf6 \strokec6  html\cf5 \strokec5 >\cf0 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb3 \strokec7 <\cf8 \strokec8 html\cf0 \strokec4  \cf6 \strokec6 lang\cf7 \strokec7 =\cf9 \strokec9 "my"\cf7 \strokec7 >\cf0 \cb1 \strokec4 \
+\cf7 \cb3 \strokec7 <\cf8 \strokec8 head\cf7 \strokec7 >\cf0 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb3     \cf7 \strokec7 <\cf8 \strokec8 meta\cf0 \strokec4  \cf6 \strokec6 charset\cf7 \strokec7 =\cf9 \strokec9 "UTF-8"\cf7 \strokec7 >\cf0 \cb1 \strokec4 \
+\cb3     \cf7 \strokec7 <\cf8 \strokec8 meta\cf0 \strokec4  \cf6 \strokec6 name\cf7 \strokec7 =\cf9 \strokec9 "viewport"\cf0 \strokec4  \cf6 \strokec6 content\cf7 \strokec7 =\cf9 \strokec9 "width=device-width, initial-scale=1.0"\cf7 \strokec7 >\cf0 \cb1 \strokec4 \
+\cb3     \cf7 \strokec7 <\cf8 \strokec8 title\cf7 \strokec7 >\cf0 \strokec4 \uc0\u4123 \u4143 \u4117 \u4154 \u4123 \u4158 \u4100 \u4154 \u4121 \u4155 \u4140 \u4152 \u4096 \u4156 \u4106 \u4151 \u4154 \u4123 \u4158 \u4143 \u4123 \u4116 \u4154  Dashboard\cf7 \strokec7 </\cf8 \strokec8 title\cf7 \strokec7 >\cf0 \cb1 \strokec4 \
+\cb3     \cf7 \strokec7 <\cf8 \strokec8 script\cf0 \strokec4  \cf6 \strokec6 src\cf7 \strokec7 =\cf9 \strokec9 "https://cdn.tailwindcss.com"\cf7 \strokec7 ></\cf8 \strokec8 script\cf7 \strokec7 >\cf0 \cb1 \strokec4 \
+\cb3     \cf7 \strokec7 <\cf8 \strokec8 link\cf0 \strokec4  \cf6 \strokec6 href\cf7 \strokec7 =\cf9 \strokec9 "https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"\cf0 \strokec4  \cf6 \strokec6 rel\cf7 \strokec7 =\cf9 \strokec9 "stylesheet"\cf7 \strokec7 >\cf0 \cb1 \strokec4 \
+\cb3     \cf7 \strokec7 <\cf8 \strokec8 style\cf7 \strokec7 >\cf0 \cb1 \strokec4 \
+\cb3         \cf8 \strokec8 body\cf0 \strokec4  \{ \cf6 \strokec6 font-family:\cf0 \strokec4  \cf10 \strokec10 'Inter'\cf0 \strokec4 , \cf11 \strokec11 sans-serif\cf0 \strokec4 ; \cf6 \strokec6 background-color:\cf0 \strokec4  \cf11 \strokec11 #f8fafc\cf0 \strokec4 ; \}\cb1 \
+\cb3         \cf8 \strokec8 ::-webkit-scrollbar\cf0 \strokec4  \{ \cf6 \strokec6 width:\cf0 \strokec4  \cf12 \strokec12 8px\cf0 \strokec4 ; \}\cb1 \
+\cb3         \cf8 \strokec8 ::-webkit-scrollbar-thumb\cf0 \strokec4  \{ \cf6 \strokec6 background:\cf0 \strokec4  \cf11 \strokec11 #cbd5e1\cf0 \strokec4 ; \cf6 \strokec6 border-radius:\cf0 \strokec4  \cf12 \strokec12 4px\cf0 \strokec4 ; \}\cb1 \
+\cb3         \cf8 \strokec8 .modal-overlay\cf0 \strokec4  \{ \cf6 \strokec6 background-color:\cf0 \strokec4  \cf11 \strokec11 rgba(\cf12 \strokec12 0\cf0 \strokec4 , \cf12 \strokec12 0\cf0 \strokec4 , \cf12 \strokec12 0\cf0 \strokec4 , \cf12 \strokec12 0.6\cf11 \strokec11 )\cf0 \strokec4 ; \cf6 \strokec6 backdrop-filter:\cf0 \strokec4  \cf11 \strokec11 blur(\cf12 \strokec12 4px\cf11 \strokec11 )\cf0 \strokec4 ; \}\cb1 \
+\cb3         \cf8 \strokec8 .movie-card\cf0 \strokec4  \{ \cf6 \strokec6 transition:\cf0 \strokec4  \cf11 \strokec11 transform\cf0 \strokec4  \cf12 \strokec12 0.2s\cf0 \strokec4 , \cf11 \strokec11 box-shadow\cf0 \strokec4  \cf12 \strokec12 0.2s\cf0 \strokec4 ; \cf6 \strokec6 border:\cf0 \strokec4  \cf12 \strokec12 1px\cf0 \strokec4  \cf11 \strokec11 solid\cf0 \strokec4  \cf11 \strokec11 #e2e8f0\cf0 \strokec4 ; \}\cb1 \
+\cb3         \cf8 \strokec8 .movie-card:hover\cf0 \strokec4  \{ \cf6 \strokec6 transform:\cf0 \strokec4  \cf11 \strokec11 translateY(\cf12 \strokec12 -5px\cf11 \strokec11 )\cf0 \strokec4 ; \cf6 \strokec6 box-shadow:\cf0 \strokec4  \cf12 \strokec12 0\cf0 \strokec4  \cf12 \strokec12 10px\cf0 \strokec4  \cf12 \strokec12 20px\cf0 \strokec4  \cf11 \strokec11 rgba(\cf12 \strokec12 0\cf0 \strokec4 , \cf12 \strokec12 0\cf0 \strokec4 , \cf12 \strokec12 0\cf0 \strokec4 , \cf12 \strokec12 0.1\cf11 \strokec11 )\cf0 \strokec4 ; \}\cb1 \
+\cb3     \cf7 \strokec7 </\cf8 \strokec8 style\cf7 \strokec7 >\cf0 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb3 \strokec7 </\cf8 \strokec8 head\cf7 \strokec7 >\cf0 \cb1 \strokec4 \
+\cf7 \cb3 \strokec7 <\cf8 \strokec8 body\cf0 \strokec4  \cf6 \strokec6 class\cf7 \strokec7 =\cf9 \strokec9 "min-h-screen text-slate-800"\cf7 \strokec7 >\cf0 \cb1 \strokec4 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb3     \cf7 \strokec7 <\cf8 \strokec8 div\cf0 \strokec4  \cf6 \strokec6 class\cf7 \strokec7 =\cf9 \strokec9 "max-w-7xl mx-auto p-4 sm:p-6 lg:p-8"\cf7 \strokec7 >\cf0 \cb1 \strokec4 \
+\cb3         \cf7 \strokec7 <\cf8 \strokec8 header\cf0 \strokec4  \cf6 \strokec6 class\cf7 \strokec7 =\cf9 \strokec9 "text-center py-8"\cf7 \strokec7 >\cf0 \cb1 \strokec4 \
+\cb3             \cf7 \strokec7 <\cf8 \strokec8 h1\cf0 \strokec4  \cf6 \strokec6 class\cf7 \strokec7 =\cf9 \strokec9 "text-4xl sm:text-5xl font-extrabold text-slate-900 mb-2"\cf7 \strokec7 >\cf0 \strokec4 Movie Dashboard\cf7 \strokec7 </\cf8 \strokec8 h1\cf7 \strokec7 >\cf0 \cb1 \strokec4 \
+\cb3             \cf7 \strokec7 <\cf8 \strokec8 p\cf0 \strokec4  \cf6 \strokec6 class\cf7 \strokec7 =\cf9 \strokec9 "text-slate-500 text-lg"\cf7 \strokec7 >\cf0 \strokec4 \uc0\u4123 \u4143 \u4117 \u4154 \u4123 \u4158 \u4100 \u4154 \u4121 \u4155 \u4140 \u4152 \u4096 \u4141 \u4143  \u4124 \u4157 \u4122 \u4154 \u4096 \u4144 \u4101 \u4157 \u4140  \u4123 \u4158 \u4140 \u4118 \u4157 \u4145 \u4096 \u4156 \u4106 \u4151 \u4154 \u4123 \u4158 \u4143 \u4123 \u4116 \u4154 \cf7 \strokec7 </\cf8 \strokec8 p\cf7 \strokec7 >\cf0 \cb1 \strokec4 \
+\cb3         \cf7 \strokec7 </\cf8 \strokec8 header\cf7 \strokec7 >\cf0 \cb1 \strokec4 \
+\
+\cb3         \cf7 \strokec7 <\cf8 \strokec8 div\cf0 \strokec4  \cf6 \strokec6 class\cf7 \strokec7 =\cf9 \strokec9 "mb-8 sticky top-0 z-10 bg-[#f8fafc]/80 backdrop-blur-sm pt-4 pb-4"\cf7 \strokec7 >\cf0 \cb1 \strokec4 \
+\cb3             \cf7 \strokec7 <\cf8 \strokec8 input\cf0 \strokec4  \cf6 \strokec6 type\cf7 \strokec7 =\cf9 \strokec9 "text"\cf0 \strokec4  \cf6 \strokec6 id\cf7 \strokec7 =\cf9 \strokec9 "search-input"\cf0 \strokec4  \cf6 \strokec6 placeholder\cf7 \strokec7 =\cf9 \strokec9 "\uc0\u55357 \u56589  \u4123 \u4143 \u4117 \u4154 \u4123 \u4158 \u4100 \u4154 \u4129 \u4121 \u4106 \u4154 \u4118 \u4156 \u4100 \u4151 \u4154  \u4123 \u4158 \u4140 \u4118 \u4157 \u4145 \u4117 \u4139 ..."\cf0 \cb1 \strokec4 \
+\cb3                    \cf6 \strokec6 class\cf7 \strokec7 =\cf9 \strokec9 "w-full p-3 rounded-lg bg-white text-slate-900 placeholder-slate-400 border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 shadow-md transition duration-300"\cf7 \strokec7 >\cf0 \cb1 \strokec4 \
+\cb3         \cf7 \strokec7 </\cf8 \strokec8 div\cf7 \strokec7 >\cf0 \cb1 \strokec4 \
+\
+\cb3         \cf7 \strokec7 <\cf8 \strokec8 main\cf0 \strokec4  \cf6 \strokec6 id\cf7 \strokec7 =\cf9 \strokec9 "movie-list-container"\cf0 \strokec4  \cf6 \strokec6 class\cf7 \strokec7 =\cf9 \strokec9 "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 pb-10"\cf7 \strokec7 >\cf0 \cb1 \strokec4 \
+\cb3             \cf7 \strokec7 <\cf8 \strokec8 div\cf0 \strokec4  \cf6 \strokec6 id\cf7 \strokec7 =\cf9 \strokec9 "loading-spinner"\cf0 \strokec4  \cf6 \strokec6 class\cf7 \strokec7 =\cf9 \strokec9 "col-span-full text-center py-20 text-slate-500"\cf7 \strokec7 >\cf0 \cb1 \strokec4 \
+\cb3                 \cf7 \strokec7 <\cf8 \strokec8 div\cf0 \strokec4  \cf6 \strokec6 class\cf7 \strokec7 =\cf9 \strokec9 "inline-block animate-spin text-4xl"\cf7 \strokec7 >\cf0 \strokec4 \uc0\u9203 \cf7 \strokec7 </\cf8 \strokec8 div\cf7 \strokec7 >\cf0 \cb1 \strokec4 \
+\cb3                 \cf7 \strokec7 <\cf8 \strokec8 p\cf0 \strokec4  \cf6 \strokec6 class\cf7 \strokec7 =\cf9 \strokec9 "mt-4"\cf7 \strokec7 >\cf0 \strokec4 \uc0\u4129 \u4097 \u4155 \u4096 \u4154 \u4129 \u4124 \u4096 \u4154 \u4121 \u4155 \u4140 \u4152 \u4096 \u4141 \u4143  \u4112 \u4100 \u4154 \u4116 \u4145 \u4117 \u4139 \u4126 \u4106 \u4154 ...\cf7 \strokec7 </\cf8 \strokec8 p\cf7 \strokec7 >\cf0 \cb1 \strokec4 \
+\cb3             \cf7 \strokec7 </\cf8 \strokec8 div\cf7 \strokec7 >\cf0 \cb1 \strokec4 \
+\cb3         \cf7 \strokec7 </\cf8 \strokec8 main\cf7 \strokec7 >\cf0 \cb1 \strokec4 \
+\cb3         \cb1 \
+\cb3         \cf7 \strokec7 <\cf8 \strokec8 div\cf0 \strokec4  \cf6 \strokec6 id\cf7 \strokec7 =\cf9 \strokec9 "no-results"\cf0 \strokec4  \cf6 \strokec6 class\cf7 \strokec7 =\cf9 \strokec9 "text-center py-10 text-slate-500 hidden"\cf7 \strokec7 >\cf0 \cb1 \strokec4 \
+\cb3             \cf7 \strokec7 <\cf8 \strokec8 p\cf0 \strokec4  \cf6 \strokec6 class\cf7 \strokec7 =\cf9 \strokec9 "text-xl"\cf7 \strokec7 >\cf0 \strokec4 \uc0\u4123 \u4158 \u4140 \u4121 \u4112 \u4157 \u4145 \u4151 \u4117 \u4139 ... \u55357 \u56873 \cf7 \strokec7 </\cf8 \strokec8 p\cf7 \strokec7 >\cf0 \cb1 \strokec4 \
+\cb3             \cf7 \strokec7 <\cf8 \strokec8 p\cf0 \strokec4  \cf6 \strokec6 class\cf7 \strokec7 =\cf9 \strokec9 "text-md mt-2"\cf7 \strokec7 >\cf0 \strokec4 \uc0\u4114 \u4142 \u4129 \u4121 \u4106 \u4154 \u4116 \u4146 \u4151  \u4123 \u4143 \u4117 \u4154 \u4123 \u4158 \u4100 \u4154 \u4121 \u4123 \u4158 \u4141 \u4117 \u4139 \u4120 \u4144 \u4152 \u4171  \u4129 \u4097 \u4156 \u4140 \u4152 \u4101 \u4096 \u4140 \u4152 \u4124 \u4143 \u4150 \u4152 \u4116 \u4146 \u4151  \u4123 \u4158 \u4140 \u4096 \u4156 \u4106 \u4151 \u4154 \u4117 \u4139 \u4171 \cf7 \strokec7 </\cf8 \strokec8 p\cf7 \strokec7 >\cf0 \cb1 \strokec4 \
+\cb3         \cf7 \strokec7 </\cf8 \strokec8 div\cf7 \strokec7 >\cf0 \cb1 \strokec4 \
+\cb3     \cf7 \strokec7 </\cf8 \strokec8 div\cf7 \strokec7 >\cf0 \cb1 \strokec4 \
+\
+\cb3     \cf7 \strokec7 <\cf8 \strokec8 div\cf0 \strokec4  \cf6 \strokec6 id\cf7 \strokec7 =\cf9 \strokec9 "movie-modal"\cf0 \strokec4  \cf6 \strokec6 class\cf7 \strokec7 =\cf9 \strokec9 "modal-overlay fixed inset-0 z-50 flex items-center justify-center p-4 hidden"\cf7 \strokec7 >\cf0 \cb1 \strokec4 \
+\cb3         \cf7 \strokec7 <\cf8 \strokec8 div\cf0 \strokec4  \cf6 \strokec6 class\cf7 \strokec7 =\cf9 \strokec9 "bg-white rounded-xl shadow-2xl w-full max-w-lg p-6 transform transition-all duration-300 scale-100"\cf7 \strokec7 >\cf0 \cb1 \strokec4 \
+\cb3             \cf7 \strokec7 <\cf8 \strokec8 h3\cf0 \strokec4  \cf6 \strokec6 id\cf7 \strokec7 =\cf9 \strokec9 "modal-title"\cf0 \strokec4  \cf6 \strokec6 class\cf7 \strokec7 =\cf9 \strokec9 "text-2xl font-bold text-blue-600 mb-4 border-b pb-2 border-slate-200"\cf7 \strokec7 ></\cf8 \strokec8 h3\cf7 \strokec7 >\cf0 \cb1 \strokec4 \
+\cb3             \cf7 \strokec7 <\cf8 \strokec8 div\cf0 \strokec4  \cf6 \strokec6 class\cf7 \strokec7 =\cf9 \strokec9 "space-y-4"\cf7 \strokec7 >\cf0 \cb1 \strokec4 \
+\cb3                 \cb1 \
+\cb3                 \cf2 \strokec2 <!-- NEW REVIEW SECTION - Now scrollable and supports wrapping text -->\cf0 \cb1 \strokec4 \
+\cb3                 \cf7 \strokec7 <\cf8 \strokec8 div\cf0 \strokec4  \cf6 \strokec6 class\cf7 \strokec7 =\cf9 \strokec9 "bg-blue-50 p-4 rounded-lg border border-blue-200 max-h-60 overflow-y-auto"\cf7 \strokec7 >\cf0 \cb1 \strokec4 \
+\cb3                     \cf7 \strokec7 <\cf8 \strokec8 p\cf0 \strokec4  \cf6 \strokec6 class\cf7 \strokec7 =\cf9 \strokec9 "text-sm text-blue-500 font-medium mb-2"\cf7 \strokec7 >\cf0 \strokec4 \uc0\u4126 \u4143 \u4150 \u4152 \u4126 \u4117 \u4154 \u4097 \u4155 \u4096 \u4154  (Review)\cf7 \strokec7 </\cf8 \strokec8 p\cf7 \strokec7 >\cf0 \cb1 \strokec4 \
+\cb3                     \cf2 \strokec2 <!-- whitespace-pre-wrap ensures line breaks and prevents unwanted truncation/overflow -->\cf0 \cb1 \strokec4 \
+\cb3                     \cf7 \strokec7 <\cf8 \strokec8 p\cf0 \strokec4  \cf6 \strokec6 id\cf7 \strokec7 =\cf9 \strokec9 "modal-review"\cf0 \strokec4  \cf6 \strokec6 class\cf7 \strokec7 =\cf9 \strokec9 "text-base text-slate-800 leading-relaxed whitespace-pre-wrap"\cf7 \strokec7 ></\cf8 \strokec8 p\cf7 \strokec7 >\cf0 \cb1 \strokec4 \
+\cb3                 \cf7 \strokec7 </\cf8 \strokec8 div\cf7 \strokec7 >\cf0 \cb1 \strokec4 \
+\cb3                 \cf2 \strokec2 <!-- END NEW REVIEW SECTION -->\cf0 \cb1 \strokec4 \
+\
+\cb3                 \cf7 \strokec7 <\cf8 \strokec8 div\cf0 \strokec4  \cf6 \strokec6 class\cf7 \strokec7 =\cf9 \strokec9 "bg-slate-50 p-4 rounded-lg flex flex-col sm:flex-row items-start sm:items-center justify-between border border-slate-200 relative"\cf7 \strokec7 >\cf0 \cb1 \strokec4 \
+\cb3                     \cf7 \strokec7 <\cf8 \strokec8 div\cf0 \strokec4  \cf6 \strokec6 class\cf7 \strokec7 =\cf9 \strokec9 "mb-3 sm:mb-0"\cf7 \strokec7 >\cf0 \cb1 \strokec4 \
+\cb3                         \cf7 \strokec7 <\cf8 \strokec8 p\cf0 \strokec4  \cf6 \strokec6 class\cf7 \strokec7 =\cf9 \strokec9 "text-sm text-slate-500 font-medium"\cf7 \strokec7 >\cf0 \strokec4 \uc0\u4101 \u4096 \u4140 \u4152 \u4125 \u4158 \u4096 \u4154  (Password)\cf7 \strokec7 </\cf8 \strokec8 p\cf7 \strokec7 >\cf0 \cb1 \strokec4 \
+\cb3                         \cf7 \strokec7 <\cf8 \strokec8 p\cf0 \strokec4  \cf6 \strokec6 id\cf7 \strokec7 =\cf9 \strokec9 "modal-password"\cf0 \strokec4  \cf6 \strokec6 class\cf7 \strokec7 =\cf9 \strokec9 "text-3xl font-mono text-slate-900 mt-1"\cf7 \strokec7 ></\cf8 \strokec8 p\cf7 \strokec7 >\cf0 \cb1 \strokec4 \
+\cb3                     \cf7 \strokec7 </\cf8 \strokec8 div\cf7 \strokec7 >\cf0 \cb1 \strokec4 \
+\cb3                     \cf7 \strokec7 <\cf8 \strokec8 button\cf0 \strokec4  \cf6 \strokec6 id\cf7 \strokec7 =\cf9 \strokec9 "copy-password-btn"\cf0 \strokec4  \cf6 \strokec6 class\cf7 \strokec7 =\cf9 \strokec9 "px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-md transition duration-200 flex items-center w-full sm:w-auto justify-center"\cf7 \strokec7 >\cf0 \cb1 \strokec4 \
+\cb3                         \cf7 \strokec7 <\cf8 \strokec8 span\cf0 \strokec4  \cf6 \strokec6 class\cf7 \strokec7 =\cf9 \strokec9 "mr-2 text-lg"\cf7 \strokec7 >\cf0 \strokec4 \uc0\u55357 \u56523 \cf7 \strokec7 </\cf8 \strokec8 span\cf7 \strokec7 >\cf0 \strokec4  \uc0\u4096 \u4144 \u4152 \u4122 \u4144 \u4117 \u4139 \cb1 \
+\cb3                     \cf7 \strokec7 </\cf8 \strokec8 button\cf7 \strokec7 >\cf0 \cb1 \strokec4 \
+\cb3                     \cf7 \strokec7 <\cf8 \strokec8 div\cf0 \strokec4  \cf6 \strokec6 id\cf7 \strokec7 =\cf9 \strokec9 "copy-confirmation"\cf0 \strokec4  \cf6 \strokec6 class\cf7 \strokec7 =\cf9 \strokec9 "absolute hidden top-1 right-1 bg-green-500 text-white text-xs font-bold py-1 px-2 rounded-full shadow-lg"\cf7 \strokec7 >\cf0 \strokec4 \uc0\u4096 \u4144 \u4152 \u4122 \u4144 \u4117 \u4156 \u4142 \u4152 \u4117 \u4139 \u4117 \u4156 \u4142 !\cf7 \strokec7 </\cf8 \strokec8 div\cf7 \strokec7 >\cf0 \cb1 \strokec4 \
+\cb3                 \cf7 \strokec7 </\cf8 \strokec8 div\cf7 \strokec7 >\cf0 \cb1 \strokec4 \
+\cb3                 \cf7 \strokec7 <\cf8 \strokec8 div\cf0 \strokec4  \cf6 \strokec6 class\cf7 \strokec7 =\cf9 \strokec9 "flex flex-col sm:flex-row gap-3 relative"\cf7 \strokec7 >\cf0 \cb1 \strokec4 \
+\cb3                     \cf7 \strokec7 <\cf8 \strokec8 a\cf0 \strokec4  \cf6 \strokec6 id\cf7 \strokec7 =\cf9 \strokec9 "modal-link-btn"\cf0 \strokec4  \cf6 \strokec6 href\cf7 \strokec7 =\cf9 \strokec9 "#"\cf0 \strokec4  \cf6 \strokec6 target\cf7 \strokec7 =\cf9 \strokec9 "_blank"\cf0 \strokec4  \cf6 \strokec6 class\cf7 \strokec7 =\cf9 \strokec9 "flex-1 px-4 py-3 bg-green-600 hover:bg-green-700 text-white font-bold text-center rounded-lg transition duration-200 flex items-center justify-center shadow-lg"\cf7 \strokec7 >\cf0 \cb1 \strokec4 \
+\cb3                         \cf7 \strokec7 <\cf8 \strokec8 span\cf0 \strokec4  \cf6 \strokec6 class\cf7 \strokec7 =\cf9 \strokec9 "mr-2 text-lg"\cf7 \strokec7 >\cf0 \strokec4 \uc0\u8599 \u65039 \cf7 \strokec7 </\cf8 \strokec8 span\cf7 \strokec7 >\cf0 \strokec4  \uc0\u4124 \u4100 \u4151 \u4154 \u4097 \u4154 \u4118 \u4157 \u4100 \u4151 \u4154 \u4117 \u4139 \cb1 \
+\cb3                     \cf7 \strokec7 </\cf8 \strokec8 a\cf7 \strokec7 >\cf0 \cb1 \strokec4 \
+\cb3                     \cf7 \strokec7 <\cf8 \strokec8 button\cf0 \strokec4  \cf6 \strokec6 id\cf7 \strokec7 =\cf9 \strokec9 "share-movie-btn"\cf0 \strokec4  \cf6 \strokec6 class\cf7 \strokec7 =\cf9 \strokec9 "flex-1 px-4 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-lg transition duration-200 flex items-center justify-center shadow-lg"\cf7 \strokec7 >\cf0 \cb1 \strokec4 \
+\cb3                         \cf7 \strokec7 <\cf8 \strokec8 span\cf0 \strokec4  \cf6 \strokec6 class\cf7 \strokec7 =\cf9 \strokec9 "mr-2 text-lg"\cf7 \strokec7 >\cf0 \strokec4 \uc0\u55357 \u56548 \cf7 \strokec7 </\cf8 \strokec8 span\cf7 \strokec7 >\cf0 \strokec4  \uc0\u4121 \u4155 \u4158 \u4125 \u4145 \u4117 \u4139 \cb1 \
+\cb3                     \cf7 \strokec7 </\cf8 \strokec8 button\cf7 \strokec7 >\cf0 \cb1 \strokec4 \
+\cb3                     \cf7 \strokec7 <\cf8 \strokec8 div\cf0 \strokec4  \cf6 \strokec6 id\cf7 \strokec7 =\cf9 \strokec9 "share-confirmation"\cf0 \strokec4  \cf6 \strokec6 class\cf7 \strokec7 =\cf9 \strokec9 "absolute hidden -top-8 left-1/2 transform -translate-x-1/2 bg-green-500 text-white text-xs font-bold py-1 px-2 rounded-full shadow-lg whitespace-nowrap z-50"\cf7 \strokec7 >\cf0 \strokec4 \uc0\u4101 \u4140 \u4126 \u4140 \u4152 \u4096 \u4144 \u4152 \u4122 \u4144 \u4117 \u4156 \u4142 \u4152 \u4117 \u4139 \u4117 \u4156 \u4142 !\cf7 \strokec7 </\cf8 \strokec8 div\cf7 \strokec7 >\cf0 \cb1 \strokec4 \
+\cb3                 \cf7 \strokec7 </\cf8 \strokec8 div\cf7 \strokec7 >\cf0 \cb1 \strokec4 \
+\cb3                 \cf7 \strokec7 <\cf8 \strokec8 button\cf0 \strokec4  \cf6 \strokec6 id\cf7 \strokec7 =\cf9 \strokec9 "modal-close-btn"\cf0 \strokec4  \cf6 \strokec6 class\cf7 \strokec7 =\cf9 \strokec9 "mt-3 w-full px-4 py-3 bg-slate-500 hover:bg-slate-600 text-white font-bold rounded-lg transition duration-200 shadow-lg"\cf7 \strokec7 >\cf0 \strokec4 \uc0\u10060  \u4117 \u4141 \u4112 \u4154 \u4121 \u4106 \u4154 \cf7 \strokec7 </\cf8 \strokec8 button\cf7 \strokec7 >\cf0 \cb1 \strokec4 \
+\cb3             \cf7 \strokec7 </\cf8 \strokec8 div\cf7 \strokec7 >\cf0 \cb1 \strokec4 \
+\cb3         \cf7 \strokec7 </\cf8 \strokec8 div\cf7 \strokec7 >\cf0 \cb1 \strokec4 \
+\cb3     \cf7 \strokec7 </\cf8 \strokec8 div\cf7 \strokec7 >\cf0 \cb1 \strokec4 \
+\
+\cb3     \cf7 \strokec7 <\cf8 \strokec8 script\cf7 \strokec7 >\cf0 \cb1 \strokec4 \
+\cb3         \cf13 \strokec13 const\cf0 \strokec4  \cf14 \strokec14 CSV_URL\cf0 \strokec4  = \cf10 \strokec10 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRCddTj940Cw2IC2DC8w9V-L-lHEfv4gAy3GK0Wwb7xkqJxtT69fHwqOCog9K3QEijdi-Ddy8VrSGs7/pub?output=csv'\cf0 \strokec4 ;\cb1 \
+\cb3         \cf13 \strokec13 const\cf0 \strokec4  rawCSV = \cf13 \strokec13 typeof\cf0 \strokec4  __file_content_Movie_Website_xlsx_Sheet1_csv !== \cf10 \strokec10 'undefined'\cf0 \strokec4  ? __file_content_Movie_Website_xlsx_Sheet1_csv : \cf10 \strokec10 ''\cf0 \strokec4 ;\cb1 \
+\cb3         \cf13 \strokec13 let\cf0 \strokec4  movies = [];\cb1 \
+\cb3         \cb1 \
+\cb3         \cf13 \strokec13 const\cf0 \strokec4  movieListContainer = document.getElementById(\cf10 \strokec10 'movie-list-container'\cf0 \strokec4 );\cb1 \
+\cb3         \cf13 \strokec13 const\cf0 \strokec4  searchInput = document.getElementById(\cf10 \strokec10 'search-input'\cf0 \strokec4 );\cb1 \
+\cb3         \cf13 \strokec13 const\cf0 \strokec4  movieModal = document.getElementById(\cf10 \strokec10 'movie-modal'\cf0 \strokec4 );\cb1 \
+\cb3         \cf13 \strokec13 const\cf0 \strokec4  modalTitle = document.getElementById(\cf10 \strokec10 'modal-title'\cf0 \strokec4 );\cb1 \
+\cb3         \cf13 \strokec13 const\cf0 \strokec4  modalPassword = document.getElementById(\cf10 \strokec10 'modal-password'\cf0 \strokec4 );\cb1 \
+\cb3         \cf13 \strokec13 const\cf0 \strokec4  modalLinkBtn = document.getElementById(\cf10 \strokec10 'modal-link-btn'\cf0 \strokec4 );\cb1 \
+\cb3         \cf13 \strokec13 const\cf0 \strokec4  modalCloseBtn = document.getElementById(\cf10 \strokec10 'modal-close-btn'\cf0 \strokec4 );\cb1 \
+\cb3         \cf13 \strokec13 const\cf0 \strokec4  copyPasswordBtn = document.getElementById(\cf10 \strokec10 'copy-password-btn'\cf0 \strokec4 );\cb1 \
+\cb3         \cf13 \strokec13 const\cf0 \strokec4  shareMovieBtn = document.getElementById(\cf10 \strokec10 'share-movie-btn'\cf0 \strokec4 ); \cb1 \
+\cb3         \cf13 \strokec13 const\cf0 \strokec4  copyConfirmation = document.getElementById(\cf10 \strokec10 'copy-confirmation'\cf0 \strokec4 );\cb1 \
+\cb3         \cf13 \strokec13 const\cf0 \strokec4  shareConfirmation = document.getElementById(\cf10 \strokec10 'share-confirmation'\cf0 \strokec4 );\cb1 \
+\cb3         \cf13 \strokec13 const\cf0 \strokec4  noResults = document.getElementById(\cf10 \strokec10 'no-results'\cf0 \strokec4 );\cb1 \
+\cb3         \cf13 \strokec13 const\cf0 \strokec4  loadingSpinner = document.getElementById(\cf10 \strokec10 'loading-spinner'\cf0 \strokec4 );\cb1 \
+\cb3         \cf13 \strokec13 const\cf0 \strokec4  modalReview = document.getElementById(\cf10 \strokec10 'modal-review'\cf0 \strokec4 );\cb1 \
+\
+\cb3         \cf13 \strokec13 function\cf0 \strokec4  parseCSV(csvText) \{\cb1 \
+\cb3             \cf13 \strokec13 if\cf0 \strokec4  (!csvText || csvText.trim() === \cf10 \strokec10 ''\cf0 \strokec4 ) \cf13 \strokec13 return\cf0 \strokec4  [];\cb1 \
+\cb3             \cf13 \strokec13 const\cf0 \strokec4  cleanedText = csvText.replace(\cf8 \strokec8 /\\r/\cf13 \strokec13 g\cf0 \strokec4 , \cf10 \strokec10 ''\cf0 \strokec4 ).replace(\cf8 \strokec8 /^\\uFEFF/\cf13 \strokec13 g\cf0 \strokec4 , \cf10 \strokec10 ''\cf0 \strokec4 ).trim(); \cb1 \
+\cb3             \cf13 \strokec13 const\cf0 \strokec4  lines = cleanedText.split(\cf10 \strokec10 '\\n'\cf0 \strokec4 ).filter(line => line.trim() !== \cf10 \strokec10 ''\cf0 \strokec4 );\cb1 \
+\cb3             \cf13 \strokec13 if\cf0 \strokec4  (lines.length < \cf15 \strokec15 2\cf0 \strokec4 ) \cf13 \strokec13 return\cf0 \strokec4  [];\cb1 \
+\
+\cb3             \cf13 \strokec13 return\cf0 \strokec4  lines.slice(\cf15 \strokec15 1\cf0 \strokec4 ).map(line => \{\cb1 \
+\cb3                 \cf13 \strokec13 const\cf0 \strokec4  values = line.split(\cf10 \strokec10 ','\cf0 \strokec4 );\cb1 \
+\cb3                 \cf13 \strokec13 if\cf0 \strokec4  (values.length < \cf15 \strokec15 3\cf0 \strokec4 ) \cf13 \strokec13 return\cf0 \strokec4  \cf13 \strokec13 null\cf0 \strokec4 ; \cb1 \
+\cb3                 \cf13 \strokec13 return\cf0 \strokec4  \{ \cb1 \
+\cb3                     name: values[\cf15 \strokec15 0\cf0 \strokec4 ].trim(), \cb1 \
+\cb3                     link: values[\cf15 \strokec15 1\cf0 \strokec4 ].trim(), \cb1 \
+\cb3                     password: values[\cf15 \strokec15 2\cf0 \strokec4 ].trim(), \cb1 \
+\cb3                     imageUrl: values[\cf15 \strokec15 3\cf0 \strokec4 ] ? values[\cf15 \strokec15 3\cf0 \strokec4 ].trim() : \cf10 \strokec10 ''\cf0 \strokec4 ,\cb1 \
+\cb3                     review: values[\cf15 \strokec15 4\cf0 \strokec4 ] ? values[\cf15 \strokec15 4\cf0 \strokec4 ].trim() : \cf10 \strokec10 ''\cf0 \strokec4  \cb1 \
+\cb3                 \};\cb1 \
+\cb3             \}).filter(movie => movie !== \cf13 \strokec13 null\cf0 \strokec4  && movie.name);\cb1 \
+\cb3         \}\cb1 \
+\
+\cb3         \cf13 \strokec13 function\cf0 \strokec4  renderMovies(movieList) \{\cb1 \
+\cb3             movieListContainer.innerHTML = \cf10 \strokec10 ''\cf0 \strokec4 ;\cb1 \
+\cb3             noResults.classList.toggle(\cf10 \strokec10 'hidden'\cf0 \strokec4 , movieList.length > \cf15 \strokec15 0\cf0 \strokec4 );\cb1 \
+\cb3             \cb1 \
+\cb3             movieList.forEach(movie => \{\cb1 \
+\cb3                 \cf13 \strokec13 const\cf0 \strokec4  card = document.createElement(\cf10 \strokec10 'div'\cf0 \strokec4 );\cb1 \
+\cb3                 card.className = \cf10 \strokec10 'movie-card bg-white rounded-xl overflow-hidden shadow-md cursor-pointer hover:bg-slate-50'\cf0 \strokec4 ;\cb1 \
+\cb3                 \cb1 \
+\cb3                 \cf13 \strokec13 const\cf0 \strokec4  nameHash = movie.name.split(\cf10 \strokec10 ''\cf0 \strokec4 ).reduce((a, b) => a + b.charCodeAt(\cf15 \strokec15 0\cf0 \strokec4 ), \cf15 \strokec15 0\cf0 \strokec4 );\cb1 \
+\cb3                 \cf13 \strokec13 const\cf0 \strokec4  bgColor = \cf10 \strokec10 `hsl(\cf0 \strokec4 $\{\cf14 \strokec14 Math\cf0 \strokec4 .abs(nameHash) % \cf15 \strokec15 360\cf0 \strokec4 \}\cf10 \strokec10 , 60%, 80%)`\cf0 \strokec4 ; \cb1 \
+\cb3                 \cf13 \strokec13 const\cf0 \strokec4  parts = movie.name.split(\cf8 \strokec8 /[\\s:\'96,]+/\cf13 \strokec13 g\cf0 \strokec4 ).filter(p => p.length > \cf15 \strokec15 0\cf0 \strokec4 );\cb1 \
+\cb3                 \cf13 \strokec13 let\cf0 \strokec4  initials = parts.slice(\cf15 \strokec15 0\cf0 \strokec4 , \cf15 \strokec15 3\cf0 \strokec4 ).map(p => p[\cf15 \strokec15 0\cf0 \strokec4 ].toUpperCase()).join(\cf10 \strokec10 ''\cf0 \strokec4 );\cb1 \
+\cb3                 \cf13 \strokec13 if\cf0 \strokec4  (initials.length === \cf15 \strokec15 0\cf0 \strokec4 ) initials = movie.name.substring(\cf15 \strokec15 0\cf0 \strokec4 , \cf15 \strokec15 2\cf0 \strokec4 ).toUpperCase() || \cf10 \strokec10 'MV'\cf0 \strokec4 ;\cb1 \
+\cb3                 \cf13 \strokec13 const\cf0 \strokec4  placeholderId = \cf10 \strokec10 `placeholder-\cf0 \strokec4 $\{movie.name.replace(\cf8 \strokec8 /[^a-zA-Z0-9]/\cf13 \strokec13 g\cf0 \strokec4 , \cf10 \strokec10 '-'\cf0 \strokec4 )\}\cf10 \strokec10 `\cf0 \strokec4 ;\cb1 \
+\cb3                 \cb1 \
+\cb3                 \cf13 \strokec13 const\cf0 \strokec4  placeholderHtml = \cf10 \strokec10 `<div id="\cf0 \strokec4 $\{placeholderId\}\cf10 \strokec10 " style="background-color: \cf0 \strokec4 $\{bgColor\}\cf10 \strokec10 ;" class="h-48 flex items-center justify-center text-slate-700 text-3xl font-bold uppercase tracking-wider rounded-t-xl \cf0 \strokec4 $\{movie.imageUrl ? \cf10 \strokec10 'hidden'\cf0 \strokec4  : \cf10 \strokec10 ''\cf0 \strokec4 \}\cf10 \strokec10 ">\cf0 \strokec4 $\{initials\}\cf10 \strokec10 </div>`\cf0 \strokec4 ;\cb1 \
+\cb3                 \cf13 \strokec13 const\cf0 \strokec4  imageHtml = movie.imageUrl ? \cf10 \strokec10 `<img src="\cf0 \strokec4 $\{movie.imageUrl\}\cf10 \strokec10 " alt="\cf0 \strokec4 $\{movie.name\}\cf10 \strokec10  Poster" class="w-full h-48 object-cover object-center" onerror="this.style.display='none'; document.getElementById('\cf0 \strokec4 $\{placeholderId\}\cf10 \strokec10 ').classList.remove('hidden');">`\cf0 \strokec4  : \cf10 \strokec10 ''\cf0 \strokec4 ;\cb1 \
+\cb3                 \cb1 \
+\cb3                 \cf13 \strokec13 const\cf0 \strokec4  reviewHtml = movie.review ? \cb1 \
+\cb3                     \cf2 \strokec2 // Card view still uses truncate for brevity\cf0 \cb1 \strokec4 \
+\cb3                     \cf10 \strokec10 `<div class="text-xs text-slate-400 mt-1 truncate">\uc0\u4126 \u4143 \u4150 \u4152 \u4126 \u4117 \u4154 \u4097 \u4155 \u4096 \u4154 : \cf0 \strokec4 $\{movie.review\}\cf10 \strokec10 </div>`\cf0 \strokec4  : \cb1 \
+\cb3                     \cf10 \strokec10 ''\cf0 \strokec4 ;\cb1 \
+\
+\cb3                 card.innerHTML = \cf10 \strokec10 `\cf0 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf10 \cb3 \strokec10                     <div class="h-48 overflow-hidden rounded-t-xl relative bg-slate-200">\cf0 \strokec4 $\{imageHtml\}$\{placeholderHtml\}\cf10 \strokec10 </div>\cf0 \cb1 \strokec4 \
+\cf10 \cb3 \strokec10                     <div class="p-4">\cf0 \cb1 \strokec4 \
+\cf10 \cb3 \strokec10                         <h4 class="text-md font-semibold text-slate-800 truncate">\cf0 \strokec4 $\{movie.name\}\cf10 \strokec10 </h4>\cf0 \cb1 \strokec4 \
+\cf10 \cb3 \strokec10                         <div class="mt-2 text-sm text-blue-600 font-medium">\uc0\u4129 \u4126 \u4145 \u4152 \u4101 \u4141 \u4112 \u4154 \u4096 \u4156 \u4106 \u4151 \u4154 \u4123 \u4116 \u4154 </div>\cf0 \cb1 \strokec4 \
+\cf10 \cb3 \strokec10                         \cf0 \strokec4 $\{reviewHtml\}\cb1 \
+\cf10 \cb3 \strokec10                     </div>`\cf0 \strokec4 ;\cb1 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb3                 card.addEventListener(\cf10 \strokec10 'click'\cf0 \strokec4 , () => showMovieDetails(movie));\cb1 \
+\cb3                 movieListContainer.appendChild(card);\cb1 \
+\cb3             \});\cb1 \
+\cb3         \}\cb1 \
+\
+\cb3         \cf13 \strokec13 function\cf0 \strokec4  showMovieDetails(movie) \{\cb1 \
+\cb3             modalTitle.textContent = movie.name;\cb1 \
+\cb3             modalPassword.textContent = movie.password;\cb1 \
+\cb3             modalLinkBtn.href = movie.link;\cb1 \
+\cb3             \cf2 \strokec2 // Set innerHTML to handle potential line breaks in review text better if they somehow passed through CSV\cf0 \cb1 \strokec4 \
+\cb3             modalReview.textContent = movie.review || \cf10 \strokec10 "\uc0\u4126 \u4143 \u4150 \u4152 \u4126 \u4117 \u4154 \u4097 \u4155 \u4096 \u4154  \u4121 \u4123 \u4158 \u4141 \u4126 \u4145 \u4152 \u4117 \u4139 \u4171 "\cf0 \strokec4 ;\cb1 \
+\cb3             copyPasswordBtn.setAttribute(\cf10 \strokec10 'data-password-to-copy'\cf0 \strokec4 , movie.password);\cb1 \
+\cb3             shareMovieBtn.setAttribute(\cf10 \strokec10 'data-name'\cf0 \strokec4 , movie.name);\cb1 \
+\cb3             shareMovieBtn.setAttribute(\cf10 \strokec10 'data-link'\cf0 \strokec4 , movie.link);\cb1 \
+\cb3             shareMovieBtn.setAttribute(\cf10 \strokec10 'data-password'\cf0 \strokec4 , movie.password);\cb1 \
+\cb3             movieModal.classList.remove(\cf10 \strokec10 'hidden'\cf0 \strokec4 );\cb1 \
+\cb3         \}\cb1 \
+\
+\cb3         \cf13 \strokec13 function\cf0 \strokec4  hideMovieDetails() \{\cb1 \
+\cb3             movieModal.classList.add(\cf10 \strokec10 'hidden'\cf0 \strokec4 );\cb1 \
+\cb3         \}\cb1 \
+\
+\cb3         \cf13 \strokec13 function\cf0 \strokec4  copyToClipboard(text, confirmationElement) \{\cb1 \
+\cb3             \cf13 \strokec13 const\cf0 \strokec4  textarea = document.createElement(\cf10 \strokec10 'textarea'\cf0 \strokec4 );\cb1 \
+\cb3             textarea.value = text;\cb1 \
+\cb3             document.body.appendChild(textarea);\cb1 \
+\cb3             textarea.select();\cb1 \
+\cb3             \cf13 \strokec13 try\cf0 \strokec4  \{\cb1 \
+\cb3                 document.execCommand(\cf10 \strokec10 'copy'\cf0 \strokec4 );\cb1 \
+\cb3                 confirmationElement.classList.remove(\cf10 \strokec10 'hidden'\cf0 \strokec4 );\cb1 \
+\cb3                 setTimeout(() => confirmationElement.classList.add(\cf10 \strokec10 'hidden'\cf0 \strokec4 ), \cf15 \strokec15 2000\cf0 \strokec4 );\cb1 \
+\cb3             \} \cf13 \strokec13 catch\cf0 \strokec4  (err) \{\cb1 \
+\cb3                 console.error(\cf10 \strokec10 'Copy failed:'\cf0 \strokec4 , err);\cb1 \
+\cb3             \}\cb1 \
+\cb3             document.body.removeChild(textarea);\cb1 \
+\cb3         \}\cb1 \
+\
+\cb3         \cf13 \strokec13 async\cf0 \strokec4  \cf13 \strokec13 function\cf0 \strokec4  shareMovie() \{\cb1 \
+\cb3             \cf13 \strokec13 const\cf0 \strokec4  name = shareMovieBtn.getAttribute(\cf10 \strokec10 'data-name'\cf0 \strokec4 );\cb1 \
+\cb3             \cf13 \strokec13 const\cf0 \strokec4  link = shareMovieBtn.getAttribute(\cf10 \strokec10 'data-link'\cf0 \strokec4 );\cb1 \
+\cb3             \cf13 \strokec13 const\cf0 \strokec4  password = shareMovieBtn.getAttribute(\cf10 \strokec10 'data-password'\cf0 \strokec4 );\cb1 \
+\cb3             \cf13 \strokec13 const\cf0 \strokec4  shareText = \cf10 \strokec10 `\uc0\u55356 \u57253  \u4123 \u4143 \u4117 \u4154 \u4123 \u4158 \u4100 \u4154 : \cf0 \strokec4 $\{name\}\cf10 \strokec10 \\n\uc0\u55357 \u56599  \u4124 \u4100 \u4151 \u4154 \u4097 \u4154 : \cf0 \strokec4 $\{link\}\cf10 \strokec10 \\n\uc0\u55357 \u56593  \u4101 \u4096 \u4140 \u4152 \u4125 \u4158 \u4096 \u4154 : \cf0 \strokec4 $\{password\}\cf10 \strokec10 `\cf0 \strokec4 ;\cb1 \
+\
+\cb3             \cf13 \strokec13 if\cf0 \strokec4  (navigator.share) \{\cb1 \
+\cb3                 \cf13 \strokec13 try\cf0 \strokec4  \{\cb1 \
+\cb3                     \cf13 \strokec13 await\cf0 \strokec4  navigator.share(\{ title: \cf10 \strokec10 `\cf0 \strokec4 $\{name\}\cf10 \strokec10 `\cf0 \strokec4 , text: shareText, url: link \});\cb1 \
+\cb3                 \} \cf13 \strokec13 catch\cf0 \strokec4  (error) \{\cb1 \
+\cb3                     \cf13 \strokec13 const\cf0 \strokec4  isCanceled = error.name === \cf10 \strokec10 'AbortError'\cf0 \strokec4  || error.message.toLowerCase().includes(\cf10 \strokec10 'canceled'\cf0 \strokec4 );\cb1 \
+\cb3                     \cf13 \strokec13 if\cf0 \strokec4  (!isCanceled) \{\cb1 \
+\cb3                         copyToClipboard(shareText, shareConfirmation);\cb1 \
+\cb3                     \}\cb1 \
+\cb3                 \}\cb1 \
+\cb3             \} \cf13 \strokec13 else\cf0 \strokec4  \{\cb1 \
+\cb3                 copyToClipboard(shareText, shareConfirmation);\cb1 \
+\cb3             \}\cb1 \
+\cb3         \}\cb1 \
+\
+\cb3         \cf13 \strokec13 function\cf0 \strokec4  filterMovies(event) \{\cb1 \
+\cb3             \cf13 \strokec13 const\cf0 \strokec4  searchTerm = event.target.value.toLowerCase().trim();\cb1 \
+\cb3             renderMovies(movies.filter(movie => movie.name.toLowerCase().includes(searchTerm)));\cb1 \
+\cb3         \}\cb1 \
+\
+\cb3         \cf13 \strokec13 async\cf0 \strokec4  \cf13 \strokec13 function\cf0 \strokec4  initApp() \{\cb1 \
+\cb3             \cf13 \strokec13 let\cf0 \strokec4  dataToParse = rawCSV;\cb1 \
+\cb3             \cf13 \strokec13 if\cf0 \strokec4  (!dataToParse) \{\cb1 \
+\cb3                 \cf13 \strokec13 try\cf0 \strokec4  \{\cb1 \
+\cb3                     \cf13 \strokec13 const\cf0 \strokec4  response = \cf13 \strokec13 await\cf0 \strokec4  fetch(\cf14 \strokec14 CSV_URL\cf0 \strokec4 );\cb1 \
+\cb3                     \cf13 \strokec13 if\cf0 \strokec4  (response.ok) dataToParse = \cf13 \strokec13 await\cf0 \strokec4  response.text();\cb1 \
+\cb3                 \} \cf13 \strokec13 catch\cf0 \strokec4  (error) \{\cb1 \
+\cb3                     console.error(\cf10 \strokec10 "Failed to fetch data from URL."\cf0 \strokec4 , error);\cb1 \
+\cb3                 \}\cb1 \
+\cb3             \}\cb1 \
+\cb3             movies = parseCSV(dataToParse);\cb1 \
+\cb3             loadingSpinner.classList.add(\cf10 \strokec10 'hidden'\cf0 \strokec4 );\cb1 \
+\cb3             renderMovies(movies);\cb1 \
+\cb3             searchInput.addEventListener(\cf10 \strokec10 'input'\cf0 \strokec4 , filterMovies);\cb1 \
+\cb3             modalCloseBtn.addEventListener(\cf10 \strokec10 'click'\cf0 \strokec4 , hideMovieDetails);\cb1 \
+\cb3             copyPasswordBtn.addEventListener(\cf10 \strokec10 'click'\cf0 \strokec4 , () => copyToClipboard(copyPasswordBtn.getAttribute(\cf10 \strokec10 'data-password-to-copy'\cf0 \strokec4 ), copyConfirmation));\cb1 \
+\cb3             shareMovieBtn.addEventListener(\cf10 \strokec10 'click'\cf0 \strokec4 , shareMovie);\cb1 \
+\cb3             movieModal.addEventListener(\cf10 \strokec10 'click'\cf0 \strokec4 , e => \{ \cf13 \strokec13 if\cf0 \strokec4  (e.target === movieModal) hideMovieDetails(); \});\cb1 \
+\cb3         \}\cb1 \
+\
+\cb3         window.onload = initApp;\cb1 \
+\cb3     \cf7 \strokec7 </\cf8 \strokec8 script\cf7 \strokec7 >\cf0 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb3 \strokec7 </\cf8 \strokec8 body\cf7 \strokec7 >\cf0 \cb1 \strokec4 \
+\cf7 \cb3 \strokec7 </\cf8 \strokec8 html\cf7 \strokec7 >\cf0 \cb1 \strokec4 \
+\
+}
